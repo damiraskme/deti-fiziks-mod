@@ -1,6 +1,9 @@
-package com.example.testmod;
+package com.paketpaket.testmod;
 
+import com.paketpaket.testmod.block.ModBlocks;
 import com.mojang.logging.LogUtils;
+import com.paketpaket.testmod.item.ModItems;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -23,6 +26,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import javax.management.modelmbean.ModelMBean;
+
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -37,6 +43,10 @@ public class testmod
     public testmod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModBlocks.register(modEventBus);
+        ModItems.register(modEventBus);
+        
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
